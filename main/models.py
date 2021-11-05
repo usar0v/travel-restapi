@@ -32,7 +32,7 @@ class City(models.Model):
   name = models.CharField(max_length=150)
   category = models.ForeignKey(Category, related_name='cities', on_delete=models.CASCADE)
   price = models.IntegerField()
-  picture = models.ImageField(upload_to='picture/', height_field=None, width_field=None, max_length=100, default='default.jpg')
+  picture = models.ImageField(upload_to='staticfiles/picture/', height_field=None, width_field=None, max_length=100, default='default.jpg')
   created_by = models.ForeignKey('auth.User', related_name='cities', on_delete=models.CASCADE, null=True)
   status = models.BooleanField(default=True)
   date_created = models.DateField(auto_now_add=True)
