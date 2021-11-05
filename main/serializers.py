@@ -11,14 +11,14 @@ class CategorySerializer(serializers.ModelSerializer):
 
 
 class LocationSerializer(serializers.ModelSerializer):
-  created_by = serializers.ReadOnlyField(source='created_by.username', read_only=False)
+  # created_by = serializers.ReadOnlyField(source='created_by.username', read_only=False)
   class Meta:
     model = Location
     fields = ('id', 'title', 'category', 'price', 'description', 'picture', 'status', 'date_created', 'created_by')
 
 
 class CitySerializer(serializers.ModelSerializer):
-  created_by = serializers.ReadOnlyField(source='created_by.username', read_only=False)
+  # created_by = serializers.ReadOnlyField(source='created_by.username', read_only=False)
   class Meta:
     model = City
     fields = ('id', 'product_tag', 'category', 'price', 'picture', 'status', 'date_created', 'created_by')
