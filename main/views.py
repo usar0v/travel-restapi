@@ -17,6 +17,7 @@ class DetailCategory(generics.RetrieveUpdateDestroyAPIView):
 
 
 class ListLocation(generics.ListCreateAPIView):
+  # print(Location.data.get('id'))
   queryset = Location.objects.all()
   serializer_class = LocationSerializer
 

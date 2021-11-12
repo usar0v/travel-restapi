@@ -11,10 +11,12 @@ class CategorySerializer(serializers.ModelSerializer):
 
 
 class LocationSerializer(serializers.ModelSerializer):
-  # created_by = serializers.ReadOnlyField(source='created_by.username', read_only=False)
+  # created_by = serializers.ReadOnlyField(source='created_by.username')
+  image = Location.picture
+  # picture = serializers.PrimaryKeyRelatedField(many=True, queryset=image)
   class Meta:
     model = Location
-    fields = ('id', 'title', 'category', 'price', 'description', 'picture', 'status', 'date_created', 'created_by')
+    fields = ('id', 'title', 'category', 'description', 'picture', 'date_created', 'created_by')
 
 
 class CitySerializer(serializers.ModelSerializer):
@@ -30,4 +32,4 @@ class UserSerializer(serializers.ModelSerializer):
 
   class Meta:
     model = User
-    fields = ['id', 'username', 'email', 'locations', 'cities']
+    fields = ['id', 'username', 'phone_number', 'locations', 'cities']
