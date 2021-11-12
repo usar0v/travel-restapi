@@ -12,7 +12,6 @@ class CategorySerializer(serializers.ModelSerializer):
 
 class LocationSerializer(serializers.ModelSerializer):
   # created_by = serializers.ReadOnlyField(source='created_by.username')
-  image = Location.picture
   # picture = serializers.PrimaryKeyRelatedField(many=True, queryset=image)
   class Meta:
     model = Location

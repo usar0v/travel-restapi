@@ -13,11 +13,9 @@ class Category(models.Model):
 class Location(models.Model):
   title = models.CharField(max_length=150)
   category = models.ForeignKey(Category, related_name='locations', on_delete=models.CASCADE)
-  # price = models.IntegerField()
   description = models.TextField()
-  picture = models.ImageField(upload_to='picture/', height_field=None, width_field=None, max_length=100, default='default.jpg')
+  picture = models.ImageField(upload_to='picture/', height_field=None, width_field=None, max_length=100, default='picture/default.jpg')
   created_by = models.ForeignKey('auth.User', related_name='locations', on_delete=models.CASCADE, null=True)
-  # status = models.BooleanField(default=True)
   date_created = models.DateField(auto_now_add=True)
 
   class Meta:
