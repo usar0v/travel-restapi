@@ -15,7 +15,7 @@ class LocationSerializer(serializers.ModelSerializer):
   # picture = serializers.PrimaryKeyRelatedField(many=True, queryset=image)
   class Meta:
     model = Location
-    fields = ('id', 'title', 'category', 'likes', 'description', 'picture', 'date_created', 'created_by')
+    fields = ('id', 'title', 'category', 'likes', 'comment', 'description', 'picture', 'date_created', 'created_by')
 
 
 class CitySerializer(serializers.ModelSerializer):
