@@ -15,7 +15,7 @@ class LocationSerializer(serializers.ModelSerializer):
   # picture = serializers.PrimaryKeyRelatedField(many=True, queryset=image)
   class Meta:
     model = Location
-    fields = ('id', 'title', 'category', 'description', 'picture', 'date_created', 'created_by')
+    fields = ('id', 'title', 'category', 'likes', 'description', 'picture', 'date_created', 'created_by')
 
 
 class CitySerializer(serializers.ModelSerializer):
@@ -31,4 +31,4 @@ class UserSerializer(serializers.ModelSerializer):
 
   class Meta:
     model = User
-    fields = ['id', 'username', 'email', 'date_joined', 'locations', 'cities']
+    fields = ['id', 'username', 'email', 'user_image', 'date_joined', 'locations', 'cities']
