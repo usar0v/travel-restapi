@@ -1,5 +1,6 @@
 from rest_framework import serializers
-from .models import Category, Location, User
+from .models import Category, Location
+from django.contrib.auth.models import User
 
 
 class LocationSerializer(serializers.ModelSerializer):
@@ -25,5 +26,4 @@ class UserSerializer(serializers.ModelSerializer):
 
   class Meta:
     model = User
-    depth = 0
-    fields = ['id', 'full_name', 'image', 'phone_number', 'date_joined', 'locations']
+    fields = ['id', 'username', 'avatar', 'phone_number', 'date_joined', 'locations']

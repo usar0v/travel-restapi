@@ -1,6 +1,7 @@
+from django.contrib.auth.models import User
 from rest_framework import generics
 
-from .models import Category, Location, User
+from .models import Category, Location
 from .serializers import CategorySerializer, LocationSerializer, UserSerializer
 
 
