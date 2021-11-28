@@ -1,13 +1,5 @@
 from rest_framework import serializers
-from django.contrib.auth.models import User
-from .models import Category, Location, City
-
-
-class CategorySerializer(serializers.ModelSerializer):
-
-  class Meta:
-    model = Category
-    fields = ('id', 'title')
+from .models import Category, Location, User
 
 
 class LocationSerializer(serializers.ModelSerializer):
@@ -18,17 +10,20 @@ class LocationSerializer(serializers.ModelSerializer):
     fields = ('id', 'title', 'category', 'likes', 'comment', 'description', 'picture', 'date_created', 'created_by')
 
 
-class CitySerializer(serializers.ModelSerializer):
-  # created_by = serializers.ReadOnlyField(source='created_by.username', read_only=False)
+class CategorySerializer(serializers.ModelSerializer):
+  locations = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
+  locations = LocationSerializer(many=True, read_only=True)
   class Meta:
-    model = City
-    fields = ('id', 'product_tag', 'category', 'price', 'picture', 'status', 'date_created', 'created_by')
+    model = Category
+    depth = 2
+    fields = ('id', 'title', 'locations')
 
 
 class UserSerializer(serializers.ModelSerializer):
   locations = serializers.PrimaryKeyRelatedField(many=True, queryset=Location.objects.all())
-  cities = serializers.PrimaryKeyRelatedField(many=True, queryset=City.objects.all())
+  locations = LocationSerializer(many=True, read_only=True)
 
   class Meta:
     model = User
-    fields = ['id', 'username', 'email', 'date_joined', 'locations', 'cities']
+    depth = 0
+    fields = ['id', 'full_name', 'image', 'phone_number', 'date_joined', 'locations']

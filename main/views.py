@@ -1,9 +1,7 @@
-from django.contrib.auth.models import User
-from django.shortcuts import render
 from rest_framework import generics
 
-from .models import Category, Location, City
-from .serializers import CategorySerializer, LocationSerializer, CitySerializer, UserSerializer
+from .models import Category, Location, User
+from .serializers import CategorySerializer, LocationSerializer, UserSerializer
 
 
 class ListCategory(generics.ListCreateAPIView):
@@ -25,16 +23,6 @@ class ListLocation(generics.ListCreateAPIView):
 class DetailLocation(generics.RetrieveUpdateDestroyAPIView):
   queryset = Location.objects.all()
   serializer_class = LocationSerializer
-
-
-class ListCity(generics.ListCreateAPIView):
-  queryset = City.objects.all()
-  serializer_class = CitySerializer
-
-
-class DetailCity(generics.RetrieveUpdateDestroyAPIView):
-  queryset = City.objects.all()
-  serializer_class = CitySerializer
 
 
 class ListUser(generics.ListCreateAPIView):
